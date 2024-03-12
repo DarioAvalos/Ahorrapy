@@ -1,0 +1,28 @@
+
+.container{
+    text-align: center;
+    margin-top: 75%;
+}
+
+.imagen-al-borde{
+    position: absolute; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
+    top: -15%; /* Coloca la imagen en la parte superior */
+    right: 0%; /* Coloca la imagen en el borde derecha */
+    left: 0%; /* Coloca la imagen en el borde izquierdo */
+    height: 45%;
+    width: 100%;
+    margin: 0; /* Elimina cualquier margen */
+    padding: 0; /* Elimina cualquier relleno */
+}
+
+.imagen-al-borde2{
+  position: fixed; /* Posicionamiento fijo para mantener la imagen en el borde inferior independientemente del desplazamiento */
+  bottom: -15%; /* Coloca la imagen en el borde inferior */
+  right: 0%; /* Coloca la imagen en el borde derecha */
+  left: 0%; /* Ajusta el borde izquierdo */
+  height: 45%;
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho de la pantalla */
+  margin: 0; /* Elimina cualquier margen */
+  padding: 0; /* Elimina cualquier relleno */
+}
+  

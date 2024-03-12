@@ -1,0 +1,7 @@
+{
+  "name": "Ahorrapy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

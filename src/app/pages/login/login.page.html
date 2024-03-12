@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+
+  <div class="texto-con-relleno">
+    <ion-title class="color-text" >
+      HOLA!
+    </ion-title>
+  </div>
+
+  <ion-img 
+    src="assets/Logo-transp.png" class="imagen-al-borde">
+  </ion-img>
+
+  <ion-img 
+    src="assets/Loginforms.png" class="imagen-al-borde2">
+  </ion-img>
+
+  <div class="correo-input">
+    <ion-item  color="light">
+      <ion-input
+        type="email"
+        placeholder="Correo"
+        class="color-input">
+      </ion-input>
+    </ion-item>
+  </div>
+
+  <div class="correo-input2">
+    <ion-item color="light">
+      <ion-input 
+        type="password" 
+        placeholder="Contraseña"
+        maxlength="10" 
+        class="color-input">
+      </ion-input>
+    </ion-item>
+
+    <div class="color-reset">
+      <a [routerLink]="['/resetpassword']">¿Olvidaste tu contraseña?</a>
+    </div>
+  </div>
+
+
+
+</ion-content>

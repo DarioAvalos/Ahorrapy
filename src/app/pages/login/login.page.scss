@@ -1,0 +1,59 @@
+
+.texto-con-relleno{
+    text-align: center;
+    margin-top: 45%;
+    background-color: #FAFE34; /* Color de fondo */
+    margin: 100px; /* Elimina cualquier margen */
+    padding: 10px; /* Espacio de relleno alrededor del texto */
+    border-radius: 20px; /* Opcional: para bordes redondeados */
+}
+
+.color-text{
+    color: #5F6062;
+    font-size: 49px; /* Tamaño de letra relativo */
+}
+  
+.imagen-al-borde{
+    position: absolute; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
+    top: 24%; /* Coloca la imagen en la parte superior */
+    right: 0%; /* Coloca la imagen en el borde derecha */
+    left: 0%; /* Coloca la imagen en el borde izquierdo */
+    height: 19%;
+    width: 100%;
+}
+
+.imagen-al-borde2{
+    position: fixed; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
+    bottom: -60%; /* Coloca la imagen en la parte superior */
+    right: 0%; /* Coloca la imagen en el borde derecha */
+    left: -50%; /* Coloca la imagen en el borde izquierdo */
+    height: 150%;
+    width: 240%;
+}
+
+.correo-input {
+    position: absolute; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
+    top: 65%;
+    right: 15%; /* Coloca la imagen en el borde derecha */
+    left: 15%; /* Coloca la imagen en el borde izquierdo */
+    border-radius: 10px; /* Opcional: para bordes redondeados */
+  }
+
+  .correo-input2 {
+    position: absolute; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
+    top: 75%;
+    right: 15%; /* Coloca la imagen en el borde derecha */
+    left: 15%; /* Coloca la imagen en el borde izquierdo */
+    border-radius: 10px; /* Opcional: para bordes redondeados */
+  }
+
+  .color-input {
+    color: #2f2f2f;
+  }
+
+  .color-reset a {
+    position: absolute; 
+    top: 120%;
+    left: 30%; /* Coloca la imagen en el borde izquierdo */
+    color: #2f2f2f; /* Color de fondo */
+  }
