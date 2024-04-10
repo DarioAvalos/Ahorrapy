@@ -1,21 +1,22 @@
 
 <ion-content class="ion-padding"  color="light">
 
-  <ion-img 
-    src="assets/Inicio.png" class="imagen-al-borde">
-  </ion-img>
-  
-  <div class="container">
-    <ion-img src="assets/LogoInicio.png"/>
+  <div class="margen-borde-superior">
   </div>
-
-  <ion-img 
-    src="assets/Inicio2.png" class="imagen-al-borde2">
-  </ion-img>
+  
+  <div>
+    <ion-img 
+    src="assets/LogoInicio.png" class="container">
+    </ion-img>
+  </div>
 
   <ion-fab vertical="center" horizontal="center" slot="fixed">
     <ion-fab-button size="small" color="primary" [routerLink]="['/login']">
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <div class="margen-borde-inferior">
+  </div>
+
 </ion-content>

@@ -1,13 +1,111 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registrar</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registrar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-img 
+    src="assets/Logo-transp.png" class="imagen-logo">
+  </ion-img>
+
+  <div 
+    class="margen-borde-inferior">
+  </div>
+
+  <div class="texto-con-relleno">
+    <ion-title class="text-center" >
+      CREAR CUENTA
+    </ion-title>
+  </div>
+
+<form [formGroup]="regForm" novalidate>
+
+  <div class="nombre-input">
+    <ion-item  color="light">
+      <ion-input
+        formControlName="nombre"
+        type="text"
+        placeholder="Nombre"
+        class="color-input">
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="this.regForm.controls?.['nombre'].touched && this.regForm.controls?.['nombre'].invalid ">
+      <ion-text *ngIf="errorControl.nombre.errors?.required">
+        Se requiere nombre completo
+      </ion-text>
+    </div>
+
+  </div>
+
+  <div class="fecha-input">
+    <ion-item color="light">
+      <ion-input 
+        formControlName="fecha"
+        [(ngModel)]="dateTimeValue" readonly (ionFocus)="openDateTimePicker()"
+        placeholder="Fecha nacimiento" 
+        class="color-input">
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="this.regForm.controls?.['fecha'].touched && this.regForm.controls?.['fecha'].invalid ">
+      <ion-text *ngIf="errorControl.fecha.errors?.required">
+        Se requiere fecha
+      </ion-text>
+    </div>
+
+  </div>
+
+  <div class="correo-input">
+    <ion-item color="light">
+      <ion-input
+        formControlName="email" 
+        type="email" 
+        placeholder="Correo"
+        class="color-input">
+      </ion-input>
+    </ion-item>
+    
+    <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?.['email'].invalid ">
+      <ion-text *ngIf="errorControl.email.errors?.required">
+        Se requiere correo
+      </ion-text>
+      <ion-text *ngIf="errorControl.email.errors?.pattern">
+        Correo invalido
+      </ion-text>
+    </div>
+
+  </div>
+
+  <div class="contrasena-input">
+    <ion-item color="light">
+      <ion-input 
+        formControlName="password"
+        type="password"
+        placeholder="Contraseña" 
+        class="color-input">
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="this.regForm.controls?.['password'].touched && this.regForm.controls?.['password'].invalid ">
+      <ion-text *ngIf="errorControl.password.errors?.required">
+        Se requiere contraseña
+      </ion-text>
+      <ion-text *ngIf="errorControl.password.errors?.pattern">
+        Contraseña invalida(Debe tener 8 digitos, mayuscula, miniscula, numero)
+      </ion-text>
+    </div>
+    
+  </div>
+
+</form>
+
+  <ion-button (click)="registrar()" shape="round">
+    REGISTRAR
+  </ion-button>
+
+  <div class="color-registro">
+
+    <p> Ya tengo cuenta 
+      <a [routerLink]="['/login']" class="negrita">Iniciar sesión</a> 
+    </p>
+    
+  </div>
+
 </ion-content>

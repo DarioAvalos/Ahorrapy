@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "auth-ahorrapy": {
+      "hosting": {
+        "app": [
+          "auth-ahorrapy"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "auth-ahorrapy"
+  }
+}

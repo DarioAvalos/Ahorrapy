@@ -7,26 +7,40 @@
   </div>
 
   <ion-img 
-    src="assets/Logo-transp.png" class="imagen-al-borde">
+    src="assets/Logo-transp.png" class="imagen-logo">
   </ion-img>
 
-  <ion-img 
-    src="assets/Loginforms.png" class="imagen-al-borde2">
-  </ion-img>
+  <div 
+    class="margen-borde-inferior">
+</div>
 
+<form [formGroup]="loginForm">
+  
   <div class="correo-input">
     <ion-item  color="light">
       <ion-input
+        formControlName="email"
         type="email"
         placeholder="Correo"
         class="color-input">
       </ion-input>
     </ion-item>
+
+    <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
+      <ion-text *ngIf="errorControl.email.errors?.required">
+        Se requiere correo
+      </ion-text>
+      <ion-text *ngIf="errorControl.email.errors?.pattern">
+        Correo invalido
+      </ion-text>
+    </div>
+
   </div>
 
-  <div class="correo-input2">
+  <div class="contrasena-input">
     <ion-item color="light">
       <ion-input 
+        formControlName="password"
         type="password" 
         placeholder="Contraseña"
         maxlength="10" 
@@ -34,13 +48,35 @@
       </ion-input>
     </ion-item>
 
-    <div class="color-reset">
+    <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid ">
+      <ion-text *ngIf="errorControl.password.errors?.required">
+        Se requiere contraseña
+      </ion-text>
+      <ion-text *ngIf="errorControl.password.errors?.pattern">
+        Contraseña invalida(Debe tener 8 digitos, mayuscula, miniscula, numero)
+      </ion-text>
+    </div>
 
-      <a [routerLink]="['/resetpassword']">¿Olvidaste tu contraseña?</a>
+    <div >
+
+      <a [routerLink]="['/resetpassword']" class="color-reset">¿Olvidaste tu contraseña?</a>
       
     </div>
+
   </div>
 
+</form>
 
+  <ion-button (click)="login()" shape="round">
+    ENTRAR
+  </ion-button>
 
+  <div class="color-registro">
+
+    <p> Unete a nosotros! 
+      <a [routerLink]="['/registrar']" class="negrita">Registrate</a> 
+    </p>
+    
+  </div>
+  
 </ion-content>

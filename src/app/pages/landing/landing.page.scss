@@ -1,28 +1,27 @@
+.margen-borde-superior{
+  top: -20px; /* Coloca la imagen en la parte superior */
+  border-radius: 0px 0px 200px 200px;
+  background: #f5c723;
+  position: relative;
+  margin: -30px;
+  padding: 0px;
+  height: 280px;
+  // width: px;
+}
 
 .container{
-    text-align: center;
-    margin-top: 75%;
+    height: 400px;
+    width: 500px;
+    margin: -75px;
 }
 
-.imagen-al-borde{
-    position: absolute; /* Posicionamiento absoluto para colocar la imagen en relación con el contenedor */
-    top: -15%; /* Coloca la imagen en la parte superior */
-    right: 0%; /* Coloca la imagen en el borde derecha */
-    left: 0%; /* Coloca la imagen en el borde izquierdo */
-    height: 45%;
-    width: 100%;
-    margin: 0; /* Elimina cualquier margen */
-    padding: 0; /* Elimina cualquier relleno */
-}
-
-.imagen-al-borde2{
-  position: fixed; /* Posicionamiento fijo para mantener la imagen en el borde inferior independientemente del desplazamiento */
-  bottom: -15%; /* Coloca la imagen en el borde inferior */
-  right: 0%; /* Coloca la imagen en el borde derecha */
-  left: 0%; /* Ajusta el borde izquierdo */
-  height: 45%;
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho de la pantalla */
-  margin: 0; /* Elimina cualquier margen */
-  padding: 0; /* Elimina cualquier relleno */
+.margen-borde-inferior{
+  border-radius: 200px 200px 0px 0px;
+  background: #f5c723;
+  position: fixed;
+  bottom:  -150px;
+  margin: -35px;
+  height: 500px;
+  width: 450px;
 }
   
