@@ -1,27 +1,29 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 255, 0, 0.438);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+
+  box-shadow: 4px 0px 16px rgba(225, 207, 7, 0.885);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.borde-margen {
+  border-radius: 20px 0px 0px 20px;
+  background: #4f4f4f;
+  top: 103px;
+  right: 0px; /* Coloca la imagen en el borde derecha */
+  float: left;
+  padding: 20px; 
+  width: 220px;
+  height: 2px; 
+  position: fixed;
+  // margin: 60px;
 }
 
-#container a {
-  text-decoration: none;
+.container {
+  position: relative;
+  text-align: end; /* Alinear horizontalmente */
+  padding-right: 30px; /* Ajustar el relleno izquierdo */
 }
+
