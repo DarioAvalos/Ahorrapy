@@ -8,6 +8,16 @@ ion-menu::part(container) {
   box-shadow: 4px 0px 16px rgba(225, 207, 7, 0.885);
 }
 
+
+.header-no-margin{
+  // --box-shadow: none; /* Elimina la sombra */
+  // border-bottom: none; /* Eliminar el borde inferior del toolbar */
+  // --padding-start: 0; /* Ajusta el relleno izquierdo */
+  // --padding-end: 0; /* Ajusta el relleno derecho */
+  background-color: var(--ion-color-primary); /* Color de fondo del toolbar */
+  border-bottom: none; /* Eliminar el borde inferior del toolbar */
+}
+
 .borde-margen {
   border-radius: 20px 0px 0px 20px;
   background: #4f4f4f;
@@ -21,9 +31,78 @@ ion-menu::part(container) {
   // margin: 60px;
 }
 
-.container {
+.user_name {
   position: relative;
   text-align: end; /* Alinear horizontalmente */
   padding-right: 30px; /* Ajustar el relleno izquierdo */
 }
+
+.inicio {
+  position: relative;
+  text-align: end; /* Alinear horizontalmente */
+  padding-right: 75px; /* Ajustar el relleno izquierdo */
+}
+
+.borde-inicio {
+  position: fixed;
+  border-radius: 10px 0px 0px 10px;
+  background: #4f4f4f;
+  top: 8px;
+  right: 0px; /* Coloca la imagen en el borde derecha */
+  float: left;
+  padding: 20px; 
+  width: 160px;
+  height: 2px; 
+  // margin: 60px;
+}
+
+.color_segment {
+  --margin-top: 0; /* Elimina el margen superior */
+  --background: #f5c723;
+  --ion-color-primary: #4f4f4f; /* Color del indicador de segmento */
+  --ion-color-primary-contrast: #4f4f4f; /* Color de texto del indicador de segmento */
+}
+
+ion-segment-button {
+  color: #4f4f4f; /* Color de texto personalizado */
+}
+
+.custom-label {
+  font-size: 20px; /* Tamaño de fuente personalizado */
+}
+
+.color_card {
+  background-color: #555555;
+  border: solid 6px #555555;
+}
+
+.label_size_card {
+  font-size: 20px; /* Tamaño de fuente personalizado */
+  color: #b8b7b7; /* Color de texto personalizado */
+}
+
+.custom-button {
+  position: relative;
+  text-align: end; /* Alinear horizontalmente */
+  padding-right: 10px; /* Ajustar el relleno izquierdo */
+}
+
+.charts {
+  display: flex;
+}
+
+.pie{
+
+  flex: 1;
+  box-shadow: 10px 10px 5px #aaaaaa;
+
+  margin-right: 20px;
+}
+
+.line{
+  flex: 1;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+
 

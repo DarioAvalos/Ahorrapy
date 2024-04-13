@@ -1,4 +1,81 @@
 <ion-app>
+
+  <div class="ion-page" id="main-content">
+    <ion-header [translucent]="true" color="primary" class="header-no-margin">
+      
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="borde-inicio"></div>
+        <ion-title class="inicio">Inicio</ion-title>
+      </ion-toolbar>
+
+      <ion-segment [(ngModel)]="selectTabs" value="cuentas" class="color_segment">
+        <ion-segment-button value="cuentas">
+          <ion-label class="custom-label">CUENTAS</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="metas">
+          <ion-label class="custom-label">METAS</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+    </ion-header>
+
+    <ion-content color="medium">
+      
+      <div *ngIf="selectTabs == 'cuentas'">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Lista de cuentas</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+
+                  <ion-card class="color_card">
+                    <ion-card-title>Efectivo</ion-card-title>
+                    <ion-card-subtitle class="label_size_card">GS 1.500.000</ion-card-subtitle>
+                  </ion-card>
+
+                </ion-col>
+                
+                <ion-col>
+
+                  <ion-card class="color_card">
+                    <ion-card-title>Tarjeta</ion-card-title>
+                    <ion-card-subtitle class="label_size_card">GS 3.200.000</ion-card-subtitle>
+                  </ion-card>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            
+            <div class="custom-button">
+              <ion-button routerLink="/registros" size="small">
+                Editar Registros
+              </ion-button>
+            </div>
+      
+          </ion-card-content>
+
+        </ion-card>
+
+        <ion-card>
+        Hol
+        </ion-card>
+
+      </div>
+
+      <div *ngIf="selectTabs == 'metas'">
+        <h3>Metas</h3>
+      </div>
+    </ion-content>
+
+  </div>
+
   <ion-menu contentId="main-content">
     <ion-header [translucent]="true">
       <ion-toolbar color="light">
@@ -7,7 +84,7 @@
         <div class="borde-margen">
         </div>
 
-          <div class="container">
+          <div class="user_name">
             <ion-text color="primary">
               <h1>Dario Avalos</h1>
               <h1></h1>
@@ -20,9 +97,9 @@
 
       <ion-list lines="full">
         <ion-menu-toggle autoHide="false" aria-hidden="true">
-
+          
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/home">
             <ion-icon name="home" slot="start" color="light"></ion-icon>
             Inicio
           </ion-item>
@@ -34,7 +111,7 @@
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/registros">
             <ion-icon name="albums" slot="start" color="light"></ion-icon>
             Registros
           </ion-item>
@@ -96,17 +173,6 @@
     </ion-button>
   </ion-menu>
 
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding"> Tap the button in the toolbar to open the menu. </ion-content>
-  </div>
 </ion-app>
 
 
