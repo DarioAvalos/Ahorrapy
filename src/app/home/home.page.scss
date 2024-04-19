@@ -87,22 +87,18 @@ ion-segment-button {
   padding-right: 10px; /* Ajustar el relleno izquierdo */
 }
 
-.charts {
-  display: flex;
+// .chart {
+//   width: 7000px;
+//   margin: 0px auto;
+//   padding: 50;
+//   margin-left: -100px;
+// }
+
+.ion-text-wrap {
+  font-size: 18px;
 }
 
-.pie{
-
-  flex: 1;
-  box-shadow: 10px 10px 5px #aaaaaa;
-
-  margin-right: 20px;
+.icon_item {
+  margin-left: -15px; /* Espacio entre el icono y el cuadro */
+  margin-right: 5px; /* Espacio entre el icono y el label */
 }
-
-.line{
-  flex: 1;
-  box-shadow: 10px 10px 5px #aaaaaa;
-}
-
-
-
