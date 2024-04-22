@@ -1,14 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Lista de categorías</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-list>
     <ng-container *ngFor="let group of groups">
+      
       <ion-item-divider (click)="toggleGroup(group)">
-        {{ group.title }}
+        <ion-label class="custom-label">{{ group.title }}</ion-label>
       </ion-item-divider>
+      
       <ng-container *ngIf="group.visible">
-        <ion-item *ngFor="let item of group.items">
-          {{ item }}
+        <ion-item *ngFor="let item of group.items" (click)="editarItem(item, group.title)">
+          <ion-label>{{ item }}</ion-label>
         </ion-item>
       </ng-container>
+
     </ng-container>
   </ion-list>
 </ion-content>

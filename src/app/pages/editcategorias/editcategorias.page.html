@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Editar categorias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-title class="ion-padding"></ion-title>
+  </div>
+  <ion-item>
+    <ion-label>Grupo:</ion-label>
+    <ion-label>{{ groupTitle }}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Modificar categoria: " type="text" [(ngModel)]="item"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="guardarValor(item)">Guardar</ion-button>
+</ion-content>

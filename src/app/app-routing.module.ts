@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'gastos',
     loadChildren: () => import('./pages/gastos/gastos.module').then( m => m.GastosPageModule)
   },
+  {
+    path: 'editcategorias',
+    loadChildren: () => import('./pages/editcategorias/editcategorias.module').then( m => m.EditcategoriasPageModule)
+  },
+  {
+    path: 'cuentas',
+    loadChildren: () => import('./pages/cuentas/cuentas.module').then( m => m.CuentasPageModule)
+  },
 ];
 
 @NgModule({

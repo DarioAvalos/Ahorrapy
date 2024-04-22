@@ -1,0 +1,22 @@
+ion-content {
+    --background: rgb(35, 35, 35);
+  }
+
+  ion-item-divider {
+    --background: #d1b422ee;
+    --color: #fff;
+  
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+  }
+
+  ion-item {
+    --background: #bba32896;
+    --color: #fff;
+  }
+
+  .custom-label {
+    font-size: 18px; /* Cambia el tamaño del texto aquí */
+  }
