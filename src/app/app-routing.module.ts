@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'registros',
-    loadChildren: () => import('./pages/registros/registros.module').then( m => m.RegistrosPageModule)
+    loadChildren: () => import('./pages/nuevo-registros/registros.module').then( m => m.RegistrosPageModule)
   },
   {
     path: 'ingresos',
@@ -51,6 +51,14 @@ const routes: Routes = [
     path: 'cuentas',
     loadChildren: () => import('./pages/cuentas/cuentas.module').then( m => m.CuentasPageModule)
   },
+  {
+    path: 'efectivo',
+    loadChildren: () => import('./pages/efectivo/efectivo.module').then( m => m.EfectivoPageModule)
+  },
+  {
+    path: 'tarjeta',
+    loadChildren: () => import('./pages/tarjeta/tarjeta.module').then( m => m.TarjetaPageModule)
+  }
 ];
 
 @NgModule({

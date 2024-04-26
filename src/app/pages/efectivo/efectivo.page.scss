@@ -1,0 +1,19 @@
+ion-item::part(native) {
+  
+    border-color: #f5c723;
+
+    border-width: 2px;
+  
+    border-radius: 20px;
+  }
+
+.fixed-bottom-guardar {
+  position: fixed;
+  bottom: 10px; /* Puedes ajustar esto según sea necesario */
+  right: 10px; /* Puedes ajustar esto según sea necesario */
+}
+.fixed-bottom-cancelar {
+  position: fixed;
+  bottom: 10px; /* Puedes ajustar esto según sea necesario */
+  right: 120px; /* Puedes ajustar esto según sea necesario */
+}

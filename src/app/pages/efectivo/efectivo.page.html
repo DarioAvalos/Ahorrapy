@@ -1,0 +1,105 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Editar cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  
+    <ion-card-content>
+
+      <form [formGroup]="cuentaForm">
+        <ion-list>
+
+            <!-- <ion-item>
+            <ion-input
+              formControlName="cuenta"
+              type="text"
+              fill="solid"
+              label="Nombre de la cuenta"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+  
+          <div *ngIf="this.cuentaForm.controls?.['cuenta'].touched && this.cuentaForm.controls?.['cuenta'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, escribe el nombre de la cuenta
+            </ion-text>
+
+          </div> -->
+                    <!-- <div class="ion-padding">
+
+          </div> -->
+
+          <ion-item>
+            <ion-select
+              formControlName="tipo"
+              label="Tipo" 
+              label-placement="floating"
+              value="efectivo">
+              <ion-select-option value="efectivo"> Efectivo </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div *ngIf="this.cuentaForm.controls?.['tipo'].touched && this.cuentaForm.controls?.['tipo'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, seleccione el tipo de cuenta
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+  
+          <ion-item>
+            <ion-input
+              formControlName="valor"
+              fill="solid"
+              label="Valor inicial"
+              labelPlacement="floating"
+              appNumericInput
+            ></ion-input>
+          </ion-item>
+
+          <div *ngIf="this.cuentaForm.controls?.['valor'].touched && this.cuentaForm.controls?.['valor'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, ingrese un valor
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+
+          <ion-item>
+            <ion-select
+              formControlName="moneda"  
+              label="Moneda" 
+              label-placement="floating"
+              value="GS">
+              <ion-select-option value="GS"> GS </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div *ngIf="this.cuentaForm.controls?.['moneda'].touched && this.cuentaForm.controls?.['moneda'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, ingrese una moneda
+            </ion-text>
+          </div>
+          
+        </ion-list>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-button [routerLink]="['/cuentas']" size="small" fill="outline" shape="round" color="danger" class="fixed-bottom-cancelar">
+    Cancelar
+  </ion-button>
+  <ion-button (click)="guardarCuenta()" size="small" fill="outline" shape="round" color="primary" class="fixed-bottom-guardar">
+    Guardar
+  </ion-button>
+  
+</ion-content>

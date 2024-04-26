@@ -1,13 +1,37 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>gastos</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Detalle de la cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">gastos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Total en cuenta
+    </ion-card-header>
+    <ion-card-content>
+      GS {{ totalRestado | formatoMiles }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item *ngFor="let registro of registros">
+          <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
+          <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="limpiarRegistros()"  
+    size="small" 
+    fill="outline" 
+    shape="round" 
+    color="primary" 
+    class="fixed-bottom-limpiar">
+    Limpiar registros
+  </ion-button>
+
 </ion-content>

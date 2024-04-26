@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Nuevo Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  
+    <ion-card-content>
+
+      <form [formGroup]="registroForm">
+        <ion-list>
+  
+          <ion-item>
+            <ion-input
+              formControlName="monto"
+              text="number"
+              fill="solid"
+              label="Nuevo Registro"
+              labelPlacement="floating"
+              appNumericInput
+            ></ion-input>
+          </ion-item>
+
+          <div *ngIf="this.registroForm.controls?.['monto'].touched && this.registroForm.controls?.['monto'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, ingrese un monto
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+
+        </ion-list>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-button [routerLink]="['/home']" size="small" fill="outline" shape="round" color="danger" class="fixed-bottom-cancelar">
+    Cancelar
+  </ion-button>
+  <ion-button (click)="guardarRegistro()"  [routerLink]="['/home']"size="small" fill="outline" shape="round" color="primary" class="fixed-bottom-guardar">
+    Guardar
+  </ion-button>
+  
+</ion-content>

@@ -8,6 +8,8 @@ import { GastosPageRoutingModule } from './gastos-routing.module';
 
 import { GastosPage } from './gastos.page';
 
+import { FormatoMilesPipe } from 'src/app/pipes/formato-miles.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,8 @@ import { GastosPage } from './gastos.page';
     IonicModule,
     GastosPageRoutingModule
   ],
-  declarations: [GastosPage]
+  declarations: [
+    GastosPage,
+    FormatoMilesPipe]
 })
 export class GastosPageModule {}
