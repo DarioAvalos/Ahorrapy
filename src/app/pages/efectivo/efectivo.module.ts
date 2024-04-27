@@ -8,8 +8,6 @@ import { EfectivoPageRoutingModule } from './efectivo-routing.module';
 
 import { EfectivoPage } from './efectivo.page';
 
-import { NumericInputDirective } from './numeric-input.directive'; 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +16,6 @@ import { NumericInputDirective } from './numeric-input.directive';
     ReactiveFormsModule,
     EfectivoPageRoutingModule
   ],
-  declarations: [EfectivoPage, NumericInputDirective]
+  declarations: [EfectivoPage]
 })
 export class EfectivoPageModule {}

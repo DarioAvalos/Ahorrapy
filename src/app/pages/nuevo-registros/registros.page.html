@@ -15,11 +15,13 @@
           <ion-item>
             <ion-input
               formControlName="monto"
-              text="number"
+              type="text"
+              inputmode="numeric"
               fill="solid"
               label="Nuevo Registro"
               labelPlacement="floating"
-              appNumericInput
+              [(ngModel)]="tuModelo" 
+              (input)="formatInput($event)"
             ></ion-input>
           </ion-item>
 
@@ -43,7 +45,7 @@
   <ion-button [routerLink]="['/home']" size="small" fill="outline" shape="round" color="danger" class="fixed-bottom-cancelar">
     Cancelar
   </ion-button>
-  <ion-button (click)="guardarRegistro()"  [routerLink]="['/home']"size="small" fill="outline" shape="round" color="primary" class="fixed-bottom-guardar">
+  <ion-button (click)="guardarRegistro()" size="small" fill="outline" shape="round" color="primary" class="fixed-bottom-guardar">
     Guardar
   </ion-button>
   

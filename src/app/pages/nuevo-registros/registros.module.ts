@@ -8,8 +8,6 @@ import { RegistrosPageRoutingModule } from './registros-routing.module';
 
 import { RegistrosPage } from './registros.page';
 
-import { NumericInputDirective } from './numeric-input.directive'; 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +16,6 @@ import { NumericInputDirective } from './numeric-input.directive';
     ReactiveFormsModule,
     RegistrosPageRoutingModule
   ],
-  declarations: [RegistrosPage, NumericInputDirective]
+  declarations: [RegistrosPage]
 })
 export class RegistrosPageModule {}

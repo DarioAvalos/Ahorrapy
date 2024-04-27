@@ -8,8 +8,6 @@ import { TarjetaPageRoutingModule } from './tarjeta-routing.module';
 
 import { TarjetaPage } from './tarjeta.page';
 
-import { NumericInputDirective } from './numeric-input.directive'; 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +16,6 @@ import { NumericInputDirective } from './numeric-input.directive';
     ReactiveFormsModule,
     TarjetaPageRoutingModule
   ],
-  declarations: [TarjetaPage, NumericInputDirective]
+  declarations: [TarjetaPage]
 })
 export class TarjetaPageModule {}

@@ -55,10 +55,14 @@
           <ion-item>
             <ion-input
               formControlName="valor"
+              type="text"
+              inputmode="numeric"
               fill="solid"
               label="Valor inicial"
+              [placeholder]="monto"
               labelPlacement="floating"
-              appNumericInput
+              [(ngModel)]="efectivo" 
+              (input)="formatInput($event)"
             ></ion-input>
           </ion-item>
 

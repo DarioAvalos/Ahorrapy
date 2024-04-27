@@ -12,18 +12,30 @@ export class GastosPage implements OnInit {
   totalRestado: number;
   cuenta: string;
 
-  constructor(private registroService: RegistroService) { }
+  selectTabs = 'cuentaE';
+
+  constructor( private registroService: RegistroService ) { }
 
   ngOnInit() {
+    this.cargarRegistros();
+  }
+
+  cargarRegistros(){
     this.registros = this.registroService.registros;
-    const cuenta = JSON.parse(localStorage.getItem('cuentaE'));
+    const cuenta = JSON.parse(localStorage.getItem(this.selectTabs));
     const montoInicial = parseFloat(cuenta.valor.replace(/\./g, '').replace(',', '.'));
     this.totalRestado = this.registroService.obtenerTotal(montoInicial);
-    console.log(montoInicial)
+    // console.log(montoInicial)
+  }
+
+  segmentChanged(event) {
+    this.selectTabs = event.detail.value;
+    this.cargarRegistros();
   }
 
   limpiarRegistros() {
     this.registroService.limpiarRegistros();
+    this.cargarRegistros();
   }
 
 }

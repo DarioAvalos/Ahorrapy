@@ -34,6 +34,11 @@ export class RegistroService {
     localStorage.removeItem('registros');
   }
 
+  // Método para obtener todos los registros
+  obtenerRegistros() {
+    return this.registros;
+  }
+
   private actualizarLocalStorage() {
     localStorage.setItem('registros', JSON.stringify(this.registros));
   }

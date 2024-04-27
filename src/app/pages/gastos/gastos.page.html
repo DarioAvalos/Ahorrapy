@@ -1,37 +1,74 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Detalle de la cuenta</ion-title>
+    <div class="borde-inicio"></div>
+    <ion-title class="inicio">Registros de cuentas</ion-title>
   </ion-toolbar>
+
+  <ion-segment [(ngModel)]="selectTabs" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="cuentaE">
+      <ion-label class="custom-label">EFECTIVO</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="cuentaT">
+      <ion-label class="custom-label">TARJETA</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      Total en cuenta
-    </ion-card-header>
-    <ion-card-content>
-      GS {{ totalRestado | formatoMiles }}
-    </ion-card-content>
-  </ion-card>
 
-  <ion-card>
-    <ion-card-content>
-      <ion-list lines="full">
-        <ion-item *ngFor="let registro of registros">
-          <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
-          <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  <div *ngIf="selectTabs == 'cuentaE'">
+    <ion-card>
+      <ion-card-header>
+        <label style="font-size: 18px;">Total en cuenta</label>
+      </ion-card-header>
+      <ion-card-content>
+        <label style="font-size: 16px;">GS {{ totalRestado | formatoMiles }}</label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-list lines="full">
+          <ion-item *ngFor="let registro of registros">
+            <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
+            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <div *ngIf="selectTabs == 'cuentaT'">
+    <ion-card>
+      <ion-card-header>
+        <label style="font-size: 18px;">Total en cuenta</label>
+      </ion-card-header>
+      <ion-card-content>
+        <label style="font-size: 16px;">GS {{ totalRestado | formatoMiles }}</label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-list lines="full">
+          <ion-item *ngFor="let registro of registros">
+            <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
+            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
 
   <ion-button (click)="limpiarRegistros()"  
-    size="small" 
-    fill="outline" 
-    shape="round" 
-    color="primary" 
-    class="fixed-bottom-limpiar">
-    Limpiar registros
-  </ion-button>
+  size="small" 
+  fill="outline" 
+  shape="round" 
+  color="primary" 
+  class="fixed-bottom-limpiar">
+  Limpiar registros
+</ion-button>
 
 </ion-content>

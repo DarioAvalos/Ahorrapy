@@ -54,12 +54,17 @@
   
           <ion-item>
             <ion-input
-              formControlName="valor" 
+              formControlName="valor"
+              type="text"
+              inputmode="numeric"
               fill="solid"
               label="Valor inicial"
+              [placeholder]="monto"
               labelPlacement="floating"
-              appNumericInput
+              [(ngModel)]="tarjeta" 
+              (input)="formatInput($event)"
             ></ion-input>
+            
           </ion-item>
 
           <div *ngIf="this.cuentaForm.controls?.['valor'].touched && this.cuentaForm.controls?.['valor'].invalid">
