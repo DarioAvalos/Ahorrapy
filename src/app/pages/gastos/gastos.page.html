@@ -31,7 +31,9 @@
         <ion-list lines="full">
           <ion-item *ngFor="let registro of registros">
             <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
-            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
+            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}
+              <div>{{ registro.categoria}}</div>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-card-content>
@@ -54,7 +56,9 @@
         <ion-list lines="full">
           <ion-item *ngFor="let registro of registros">
             <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
-            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}</ion-label>
+            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}
+              <div>{{ registro.categoria}}</div>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-card-content>

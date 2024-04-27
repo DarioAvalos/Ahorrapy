@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { AutenticacionService } from '../services/autenticacion.service';
 import { Router } from '@angular/router';
 
+import { RegistroService } from '../services/registros.service';
+
 import {
   ApexNonAxisChartSeries,
   ApexAxisChartSeries,
@@ -31,6 +33,9 @@ export type ChartOptions = {
 })
 export class HomePage {
 
+  totalRestadoEfectivo: number;
+  totalRestadoTarjeta: number;
+
   @ViewChild("chart") chart: ChartComponent;
   public chartGastos: Partial<ChartOptions>;
   public chartPresup: Partial<ChartOptions>;
@@ -38,7 +43,8 @@ export class HomePage {
   selectTabs = 'cuentas';
 
   constructor(public router: Router,
-              public authService: AutenticacionService
+              public authService: AutenticacionService,
+              private registroService: RegistroService
   ) {
     this.chartGastos = {
       series: [100, 55, 13, 43, 22],

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,9 @@ export class DataService {
 
   selectedItem: any;
 
+  private categoriesChangedSource = new Subject<void>();
+  categoriesChanged$: Observable<void> = this.categoriesChangedSource.asObservable();
+
   constructor() { }
 
   actualizarItem(nuevoItem: any) {
@@ -65,6 +69,7 @@ export class DataService {
         if (itemIndex > -1) {
           group.items[itemIndex] = nuevoItem.item;
           localStorage.setItem('groups', JSON.stringify(this.groups)); // Guardar en localStorage
+          this.categoriesChangedSource.next(); // Notificar el cambio
         }
       }
     }

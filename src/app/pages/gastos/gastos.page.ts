@@ -20,12 +20,11 @@ export class GastosPage implements OnInit {
     this.cargarRegistros();
   }
 
-  cargarRegistros(){
-    this.registros = this.registroService.registros;
-    const cuenta = JSON.parse(localStorage.getItem(this.selectTabs));
-    const montoInicial = parseFloat(cuenta.valor.replace(/\./g, '').replace(',', '.'));
-    this.totalRestado = this.registroService.obtenerTotal(montoInicial);
-    // console.log(montoInicial)
+  cargarRegistros() {
+    const cuenta = this.selectTabs === 'cuentaE' ? 'efectivo' : 'tarjeta';
+    const montoInicial = parseFloat(localStorage.getItem(cuenta).replace(/\./g, '').replace(',', '.'));
+    this.totalRestado = this.registroService.obtenerTotal(montoInicial, cuenta);
+    this.registros = this.registroService.obtenerRegistrosPorCuenta(cuenta);
   }
 
   segmentChanged(event) {
@@ -34,8 +33,8 @@ export class GastosPage implements OnInit {
   }
 
   limpiarRegistros() {
-    this.registroService.limpiarRegistros();
+    const cuenta = this.selectTabs === 'cuentaE' ? 'efectivo' : 'tarjeta';
+    this.registroService.limpiarRegistrosPorCuenta(cuenta);
     this.cargarRegistros();
   }
-
 }

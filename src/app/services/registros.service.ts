@@ -5,7 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class RegistroService {
 
-  registros: any[] = [];
+  registros: { [cuenta: string]: any[] } = {
+    efectivo: [],
+    tarjeta: []
+  };
 
   constructor() { 
     const storedData = localStorage.getItem('registros');
@@ -14,24 +17,28 @@ export class RegistroService {
     }
   }
 
-  restarMonto(monto: number, fecha: string) {
+  restarMonto(monto: number, fecha: string, cuenta: string, categoria: string) {
     const montoFormateado = monto.toLocaleString('es-PY');
-    this.registros.push({ monto: montoFormateado, fecha: fecha });
+    this.registros[cuenta].push({ monto: montoFormateado, fecha, categoria });
     this.actualizarLocalStorage();
   }
 
-  obtenerTotal(cuentaValor: number) {
+  obtenerTotal(cuentaValor: number, cuenta: string) {
     let totalRestado = 0;
-    for (const registro of this.registros) {
+    for (const registro of this.registros[cuenta]) {
       const montoNumerico = parseFloat(registro.monto.replace(/\./g, '').replace(',', '.'));
       totalRestado += montoNumerico;
     }
     return cuentaValor - totalRestado;
   }
 
-  limpiarRegistros() {
-    this.registros = [];
-    localStorage.removeItem('registros');
+  limpiarRegistrosPorCuenta(cuenta: string) {
+    this.registros[cuenta] = [];
+    this.actualizarLocalStorage();
+  }
+
+  obtenerRegistrosPorCuenta(cuenta: string) {
+    return this.registros[cuenta];
   }
 
   // Método para obtener todos los registros

@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Nuevo Registro</ion-title>
+    <div class="borde-inicio"></div>
+    <ion-title class="inicio">Nuevo registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +19,7 @@
               type="text"
               inputmode="numeric"
               fill="solid"
-              label="Nuevo Registro"
+              label="Monto"
               labelPlacement="floating"
               [(ngModel)]="tuModelo" 
               (input)="formatInput($event)"
@@ -28,6 +29,45 @@
           <div *ngIf="this.registroForm.controls?.['monto'].touched && this.registroForm.controls?.['monto'].invalid">
             <ion-text class="ion-padding">
               Por favor, ingrese un monto
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+
+          <ion-item>
+            <ion-select
+              formControlName="tipo"
+              label="Cuenta" 
+              label-placement="floating">
+              <ion-select-option value="efectivo"> Efectivo </ion-select-option>
+              <ion-select-option value="tarjeta"> Tarjeta </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div *ngIf="this.registroForm.controls?.['tipo'].touched && this.registroForm.controls?.['tipo'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, seleccione el tipo de cuenta
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+
+          <ion-item>
+            <ion-select
+              formControlName="categoria"
+              label="Categoria" 
+              label-placement="floating">
+              <ion-select-option *ngFor="let item of allItems" [value]="item">{{ item }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div *ngIf="this.registroForm.controls?.['categoria'].touched && this.registroForm.controls?.['categoria'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, seleccione la categoria
             </ion-text>
           </div>
 
