@@ -29,13 +29,14 @@
     <ion-card>
       <ion-card-content>
         <ion-list lines="full">
-          <ion-item *ngFor="let registro of registros">
+          <ion-item *ngFor="let registro of registros.slice().reverse()">
             <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
-            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}
-              <div>{{ registro.categoria}}</div>
+            <ion-label class="ion-text-end" color="danger">GS {{ registro.monto | formatoMiles }}
+              <div class="ion-text-end">{{ registro.categoria}}</div>
             </ion-label>
           </ion-item>
         </ion-list>
+        <ion-text *ngIf="registros && registros.length === 0">No hay registros para mostrar</ion-text>
       </ion-card-content>
     </ion-card>
 
@@ -54,13 +55,14 @@
     <ion-card>
       <ion-card-content>
         <ion-list lines="full">
-          <ion-item *ngFor="let registro of registros">
+          <ion-item *ngFor="let registro of registros.slice().reverse()">
             <ion-label color="danger">{{ registro.fecha | date: 'dd/MM/yyyy' }}</ion-label>
-            <ion-label slot="end" color="danger">GS {{ registro.monto | formatoMiles }}
-              <div>{{ registro.categoria}}</div>
+            <ion-label class="ion-text-end" color="danger">GS {{ registro.monto | formatoMiles }}
+              <div class="ion-text-end">{{ registro.categoria}}</div>
             </ion-label>
           </ion-item>
         </ion-list>
+        <ion-text *ngIf="registros && registros.length === 0">No hay registros para mostrar</ion-text>
       </ion-card-content>
     </ion-card>
 

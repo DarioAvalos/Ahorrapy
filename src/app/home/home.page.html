@@ -35,18 +35,18 @@
               <ion-row>
                 <ion-col>
 
-                  <ion-card class="color_card">
+                  <ion-card class="color_card" (click)="selectTabs2 = 'efectivo'" (click)="actualizarTotalGastos(selectTabs2)" (click)="Muestragrafico(selectTabs2)">
                     <ion-card-title>Efectivo</ion-card-title>
-                    <ion-card-subtitle class="label_size_card">GS 1.500.000</ion-card-subtitle>
+                    <ion-card-subtitle class="label_size_card">GS {{ totalRestadoE | formatoMilesHome }}</ion-card-subtitle>
                   </ion-card>
 
                 </ion-col>
                 
                 <ion-col>
 
-                  <ion-card class="color_card">
+                  <ion-card class="color_card" (click)="selectTabs2 = 'tarjeta'" (click)="actualizarTotalGastos(selectTabs2)" (click)="Muestragrafico(selectTabs2)">
                     <ion-card-title>Tarjeta</ion-card-title>
-                    <ion-card-subtitle class="label_size_card">GS 3.200.000</ion-card-subtitle>
+                    <ion-card-subtitle class="label_size_card">GS {{ totalRestadoT | formatoMilesHome }}</ion-card-subtitle>
                   </ion-card>
 
                 </ion-col>
@@ -54,7 +54,7 @@
             </ion-grid>
             
             <div class="custom-button">
-              <ion-button routerLink="/registros" size="small">
+              <ion-button routerLink="/cuentas" size="small">
                 Editar
               </ion-button>
             </div>
@@ -63,6 +63,7 @@
 
         </ion-card>
 
+        <div *ngIf="selectTabs2 == 'efectivo'">
         <ion-card>
           <ion-card-title class="ion-padding">Gráfico de gastos</ion-card-title>
           <ion-grid fixed>
@@ -70,7 +71,7 @@
               <ion-col size="auto">
                 <ion-card-title>Este mes</ion-card-title>
                 <ion-card-subtitle class="label_size_card">GS</ion-card-subtitle>
-                <ion-card-subtitle class="label_size_card">3.200.000</ion-card-subtitle>
+                <ion-card-subtitle class="label_size_card">{{ totalGastos | formatoMilesHome }}</ion-card-subtitle>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -87,51 +88,98 @@
         <ion-card>
           <ion-card-title class="ion-padding">Últimos registros</ion-card-title>
     
-          <ion-list [inset]="true">
-            <ion-item [button]="true" detail="false">
+          <ion-list>
+
+            <ion-item *ngFor="let registro of registrosE.slice().reverse().slice(0, 5)">
               <ion-icon color="primary" name="checkmark-circle" slot="start" class="icon_item" size="small"></ion-icon>
               <ion-label slot="start">
-                <ion-text class="ion-text-wrap">Combustible</ion-text><br />
+                <ion-text class="ion-text-wrap">{{ registro.categoria }}</ion-text><br />
                 <ion-note color="light">
                   Efectivo
                 </ion-note>
               </ion-label>
 
-              <ion-label slot="end">
-                <ion-text color="danger" class="ion-text-wrap">-Gs 500.000</ion-text><br />
+              <ion-label class="ion-text-end">
+                <ion-text color="danger" class="ion-text-wrap">-Gs {{ registro.monto | formatoMilesHome }}</ion-text><br />
                 <ion-note color="light">
-                  11 abril
+                  {{ registro.fecha | date: 'dd/MM/yyy' }}
                 </ion-note>
               </ion-label>
 
             </ion-item>
+            <ion-text *ngIf="registrosE && registrosE.length === 0" class="ion-padding" >
+              No hay registros para mostrar
+            </ion-text>
 
-            <ion-item [button]="true" detail="false">
-              <ion-icon color="primary" name="checkmark-circle" slot="start" class="icon_item" size="small"></ion-icon>
-              <ion-label slot="start">
-                <ion-text class="ion-text-wrap">Comida y bebida</ion-text><br />
-                <ion-note color="light">
-                  Efectivo
-                </ion-note>
-              </ion-label>
-
-              <ion-label slot="end">
-                <ion-text color="danger" class="ion-text-wrap">-Gs 800.000</ion-text><br />
-                <ion-note color="light">
-                  11 abril
-                </ion-note>
-              </ion-label>
-
-            </ion-item>
           </ion-list>
 
           <div class="custom-button" >
-            <ion-button routerLink="/registros" size="small" class="ion-padding">
-              Editar
+            <ion-button routerLink="/gastos" size="small" class="ion-padding">
+              Ver mas
             </ion-button>
           </div>
 
         </ion-card>
+      </div>
+
+      <div *ngIf="selectTabs2 == 'tarjeta'">
+        <ion-card>
+          <ion-card-title class="ion-padding">Gráfico de gastos</ion-card-title>
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="auto">
+                <ion-card-title>Este mes</ion-card-title>
+                <ion-card-subtitle class="label_size_card">GS</ion-card-subtitle>
+                <ion-card-subtitle class="label_size_card">{{ totalGastos | formatoMilesHome }}</ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <div>
+            <apx-chart
+              [series]="chartGastos.series"
+              [chart]="chartGastos.chart"
+              [labels]="chartGastos.labels"
+              [responsive]="chartGastos.responsive"
+            ></apx-chart>
+          </div>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-title class="ion-padding">Últimos registros</ion-card-title>
+    
+          <ion-list>
+
+            <ion-item *ngFor="let registro of registrosT.slice().reverse().slice(0, 5)">
+              <ion-icon color="primary" name="checkmark-circle" slot="start" class="icon_item" size="small"></ion-icon>
+              <ion-label slot="start">
+                <ion-text class="ion-text-wrap">{{ registro.categoria }}</ion-text><br />
+                <ion-note color="light">
+                  Efectivo
+                </ion-note>
+              </ion-label>
+
+              <ion-label class="ion-text-end">
+                <ion-text color="danger" class="ion-text-wrap">-Gs {{ registro.monto | formatoMilesHome }}</ion-text><br />
+                <ion-note color="light">
+                  {{ registro.fecha | date: 'dd/MM/yyy' }}
+                </ion-note>
+              </ion-label>
+
+            </ion-item>
+            <ion-text *ngIf="registrosT && registrosT.length === 0" class="ion-padding">
+              No hay registros para mostrar
+            </ion-text>
+
+          </ion-list>
+
+          <div class="custom-button">
+            <ion-button routerLink="/gastos" size="small" class="ion-padding">
+              Ver mas
+            </ion-button>
+          </div>
+
+        </ion-card>
+      </div>
 
       </div>
 
@@ -155,18 +203,85 @@
           <ion-card-title>Presupuestos</ion-card-title>
           <ion-card-subtitle>¿Hasta cuanto puedo gastar?</ion-card-subtitle>
          </ion-card-header>
-         <div id="chart">
-          <apx-chart
-            [series]="chartPresup.series2"
-            [chart]="chartPresup.chart"
-            [dataLabels]="chartPresup.dataLabels"
-            [plotOptions]="chartPresup.plotOptions"
-            [xaxis]="chartPresup.xaxis"
-          ></apx-chart>
-        </div>
+         <ion-card-content>
+          
+          <ion-card *ngFor="let presupuesto of presupuestos.slice().reverse().slice(0, 2)">
+            <ion-card-header>
+              <ion-card-title>{{ presupuesto.nombre }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div>
+                <b>Valor:</b> {{ presupuesto.valor }}
+              </div>
+              <div>
+                <b>Categorías:</b> {{ presupuesto.categoria.join(', ') }}
+              </div>
+              <div class="ion-padding">
+              </div> 
+              <ion-progress-bar color="success" [value]="presupuesto.porcentaje ? presupuesto.porcentaje : 0">
+              </ion-progress-bar>
+              <div class="porcentaje">
+                {{ presupuesto.porcentaje * 100 | number:'1.0-0' }} %
+              </div>
+              <div>
+                Total de gasto: {{ presupuesto.totalGasto.toLocaleString('es-PY') }}
+              </div>
+              <div>
+                Saldo: {{ presupuesto.saldo.toLocaleString('es-PY') }}
+              </div>
+              
+            </ion-card-content>
+          </ion-card>
+
+          <div class="custom-button">
+            <ion-button routerLink="/presupuesto" size="small" size="small" fill="outline" shape="round">
+              Ver mas
+            </ion-button>
+          </div>
+
+         </ion-card-content>
+
         </ion-card>
 
+        <ion-card>
+          <ion-card-header>
+           <ion-card-title>Objetivos</ion-card-title>
+           <ion-card-subtitle>Trata de alcanzar tus metas!!</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <!-- Cards para mostrar los objetivos y su progreso -->
+            <ion-card *ngFor="let objetivo of objetivos">
+              <ion-card-header>
+                <ion-card-title>{{ objetivo.nombre }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <div>
+                  <b>Valor:</b> {{ objetivo.valor | number: '1.0-0' }}
+                </div>
+                <div class="ion-padding"></div>
+                <ion-progress-bar color="primary" [value]="objetivo.progreso / objetivo.valor"></ion-progress-bar>
+                <div class="porcentaje">
+                  {{ objetivo.progreso / objetivo.valor * 100 | number:'1.0-0' }} %
+                </div>
+                <div>
+                  Total Ahorrado: {{ objetivo.progreso | number: '1.0-0' }}
+                </div>
+              </ion-card-content>
+            </ion-card>
+
+            <div class="custom-button">
+              <ion-button routerLink="/objetivos" size="small" size="small" fill="outline" shape="round">
+                Ver mas
+              </ion-button>
+            </div>
+
+          </ion-card-content>
+
+         </ion-card>
+
       </div>
+
     </ion-content>
 
   </div>
@@ -218,13 +333,13 @@
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/presupuesto">
             <ion-icon name="bar-chart" slot="start" color="light"></ion-icon>
             Presupuestos
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/objetivos">
             <ion-icon name="golf" slot="start" color="light"></ion-icon>
             Objetivos
           </ion-item>
@@ -235,11 +350,11 @@
             Lista de compras
           </ion-item>
 
-          <ion-item  
+          <!-- <ion-item  
             routerLink="/categorias">
             <ion-icon name="server" slot="start" color="light"></ion-icon>
             Monedas
-          </ion-item>
+          </ion-item> -->
 
           <ion-item  
             routerLink="/categorias">

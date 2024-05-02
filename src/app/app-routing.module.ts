@@ -58,6 +58,14 @@ const routes: Routes = [
   {
     path: 'tarjeta',
     loadChildren: () => import('./pages/tarjeta/tarjeta.module').then( m => m.TarjetaPageModule)
+  },
+  {
+    path: 'presupuesto',
+    loadChildren: () => import('./pages/presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
+  },
+  {
+    path: 'objetivos',
+    loadChildren: () => import('./pages/objetivos/objetivos.module').then( m => m.ObjetivosPageModule)
   }
 ];
 

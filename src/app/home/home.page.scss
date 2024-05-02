@@ -84,7 +84,7 @@ ion-segment-button {
 .custom-button {
   position: relative;
   text-align: end; /* Alinear horizontalmente */
-  padding-right: 10px; /* Ajustar el relleno izquierdo */
+  padding-right: 40px; /* Ajustar el relleno izquierdo */
 }
 
 // .chart {
@@ -101,4 +101,7 @@ ion-segment-button {
 .icon_item {
   margin-left: -15px; /* Espacio entre el icono y el cuadro */
   margin-right: 5px; /* Espacio entre el icono y el label */
+}
+.porcentaje {
+  float: right;
 }

@@ -1,0 +1,120 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <div class="borde-inicio"></div>
+    <ion-title class="inicio">Presupuestos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+  
+    <ion-card-content>
+
+      <form [formGroup]="presupForm">
+        <ion-list>
+
+          <ion-item>
+            <ion-input
+              formControlName="nombre"
+              type="text"
+              fill="solid"
+              label="Nombre del presupuesto"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+  
+          <div *ngIf="this.presupForm.controls?.['nombre'].touched && this.presupForm.controls?.['nombre'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, escribe el nombre del presupuesto
+            </ion-text>
+
+          </div> 
+          
+          <div class="ion-padding">
+          </div>
+  
+          <ion-item>
+            <ion-input
+              formControlName="valor"
+              type="text"
+              inputmode="numeric"
+              fill="solid"
+              label="Valor"
+              labelPlacement="floating"
+              [(ngModel)]="monto"
+              (input)="formatInput($event)"
+            ></ion-input>
+          </ion-item>
+
+          <div *ngIf="this.presupForm.controls?.['valor'].touched && this.presupForm.controls?.['valor'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, ingrese un valor
+            </ion-text>
+          </div>
+
+          <div class="ion-padding">
+
+          </div>
+
+          <ion-item>
+            <ion-select
+              formControlName="categoria"
+              label="Categoria" 
+              label-placement="floating"
+              multiple="true">
+              <ion-select-option *ngFor="let item of allItems" [value]="item">{{ item }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div *ngIf="this.presupForm.controls?.['categoria'].touched && this.presupForm.controls?.['categoria'].invalid">
+            <ion-text class="ion-padding">
+              Por favor, seleccione una o varias categorías
+            </ion-text>
+          </div>
+          
+        </ion-list>
+      </form>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <ion-button size="small" fill="outline" shape="round" color="primary" (click)="guardarPresupuesto()">
+          Añadir
+        </ion-button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let presupuesto of presupuestos">
+    <ion-card-header>
+      <ion-card-title>{{ presupuesto.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <b>Valor:</b> {{ presupuesto.valor }}
+      </div>
+      <div>
+        <b>Categorías:</b> {{ presupuesto.categoria.join(', ') }}
+      </div>
+      <div class="ion-padding">
+      </div> 
+      <ion-progress-bar color="success" [value]="presupuesto.porcentaje ? presupuesto.porcentaje : 0">
+      </ion-progress-bar>
+      <div class="porcentaje">
+        {{ presupuesto.porcentaje * 100 | number:'1.0-0' }} %
+      </div>
+      <div>
+        Total de gasto: {{ presupuesto.totalGasto.toLocaleString('es-PY') }}
+      </div>
+      <div>
+        Saldo: {{ presupuesto.saldo.toLocaleString('es-PY') }}
+      </div>
+      <div class="ion-padding">
+      </div>
+      <div style="display: flex; justify-content: flex-end;">
+        <ion-button size="small" fill="outline" shape="round" color="danger" (click)="eliminarPresupuesto(presupuesto)">Eliminar</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

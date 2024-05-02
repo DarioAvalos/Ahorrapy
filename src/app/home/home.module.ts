@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { NgApexchartsModule } from "ng-apexcharts";
+import { FormatoMilesPipeHome } from '../pipes/formato-milesHome.pipe';
 
 
 
@@ -18,6 +19,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     HomePageRoutingModule,
     NgApexchartsModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, 
+    FormatoMilesPipeHome 
+  ]
 })
 export class HomePageModule {}
