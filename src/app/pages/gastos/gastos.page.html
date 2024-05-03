@@ -4,7 +4,7 @@
     <ion-title class="inicio">Registros de cuentas</ion-title>
   </ion-toolbar>
 
-  <ion-segment [(ngModel)]="selectTabs" (ionChange)="segmentChanged($event)">
+  <ion-segment [(ngModel)]="selectTabsgasto" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="cuentaE">
       <ion-label class="custom-label">EFECTIVO</ion-label>
     </ion-segment-button>
@@ -16,7 +16,7 @@
 
 <ion-content>
 
-  <div *ngIf="selectTabs == 'cuentaE'">
+  <div *ngIf="selectTabsgasto == 'cuentaE'">
     <ion-card>
       <ion-card-header>
         <label style="font-size: 18px;">Total en cuenta</label>
@@ -42,7 +42,7 @@
 
   </div>
 
-  <div *ngIf="selectTabs == 'cuentaT'">
+  <div *ngIf="selectTabsgasto == 'cuentaT'">
     <ion-card>
       <ion-card-header>
         <label style="font-size: 18px;">Total en cuenta</label>

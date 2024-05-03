@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
@@ -11,11 +11,12 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
 })
 export class LoginPage implements OnInit {
 
-  loginForm : FormGroup
+  loginForm : FormGroup;
 
   constructor(public formBuilder: FormBuilder, 
     public loadingCtrl: LoadingController,
     public authService: AutenticacionService,
+    private alertController: AlertController,
     public router: Router) { }
 
   ngOnInit() {
@@ -28,9 +29,16 @@ export class LoginPage implements OnInit {
       ],
       password : ['',[
       Validators.required,
-      Validators.pattern("(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}")]
-    ]
+      Validators.pattern("(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}")],
+      ],
+      rememberMe: [false]
     });
+
+    // Cargar credenciales guardadas si existen
+    const savedCredentials = this.authService.getSavedCredentials();
+    if (savedCredentials) {
+      this.loginForm.patchValue(savedCredentials);
+    }
 
   }
 
@@ -38,22 +46,35 @@ export class LoginPage implements OnInit {
     return this.loginForm?.controls;
   }
 
-  async login(){
+  async login() {
     const loading = await this.loadingCtrl.create();
-    await loading.present();
-    if(this.loginForm?.valid){
-      const user = await this.authService.loginUser(this.loginForm.value.email,this.loginForm.value.password).catch((error)=>{
-          console.log(error);
-          loading.dismiss();
-        })
-
-        if(user){
-          loading.dismiss();
-          this.router.navigate(['/home'])
-        }else{
-          console.log('proporcionar el valor correcto');
-        }
+    if (this.loginForm?.valid) {
+      const { email, password, rememberMe } = this.loginForm.value;
+      try {
+        await loading.present();
+        await this.authService.loginUser(email, password);
+        // Guardar credenciales si el usuario marcó "Recuérdame"
+        this.authService.saveCredentials(email, password, rememberMe);
+        this.router.navigate(['/home']);
+      } catch (error) {
+        console.log(error);
+        const alert = await this.alertController.create({
+          header: 'Aviso',
+          message: 'Correo o contraseña incorrecta.',
+          buttons: ['OK']
+        });
+        await alert.present();
+      } finally {
+        loading.dismiss();
+      }
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message: 'Correo o contraseña incorrecta.',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
-
+  
 }

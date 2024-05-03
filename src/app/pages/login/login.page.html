@@ -12,60 +12,62 @@
 
   <div 
     class="margen-borde-inferior">
-</div>
+  </div>
 
-<form [formGroup]="loginForm">
+  <form [formGroup]="loginForm">
+    
+    <div class="correo-input">
+      <ion-item  color="light">
+        <ion-input
+          formControlName="email"
+          type="email"
+          placeholder="Correo"
+          class="color-input">
+        </ion-input>
+      </ion-item>
+    
+      <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
+          Se requiere correo
+        </ion-text>
+        <ion-text *ngIf="errorControl.email.errors?.pattern">
+          Correo invalido
+        </ion-text>
+      </div>
+    
+    </div>
   
-  <div class="correo-input">
-    <ion-item  color="light">
-      <ion-input
-        formControlName="email"
-        type="email"
-        placeholder="Correo"
-        class="color-input">
-      </ion-input>
-    </ion-item>
+    <div class="contrasena-input">
+      <ion-item color="light">
+        <ion-input 
+          formControlName="password"
+          type="password" 
+          placeholder="Contraseña"
+          maxlength="10" 
+          class="color-input">
+        </ion-input>
+      </ion-item>
+    
+      <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid ">
+        <ion-text *ngIf="errorControl.password.errors?.required">
+          Se requiere contraseña
+        </ion-text>
+        <ion-text *ngIf="errorControl.password.errors?.pattern">
+          Contraseña invalida(Debe tener 8 digitos, mayuscula, miniscula, numero)
+        </ion-text>
+      </div>
+    
+      <div>
+        <a [routerLink]="['/resetpassword']" class="color-reset">¿Olvidaste tu contraseña?</a>
+      </div>
 
-    <div *ngIf="this.loginForm.controls?.['email'].touched && this.loginForm.controls?.['email'].invalid">
-      <ion-text *ngIf="errorControl.email.errors?.required">
-        Se requiere correo
-      </ion-text>
-      <ion-text *ngIf="errorControl.email.errors?.pattern">
-        Correo invalido
-      </ion-text>
-    </div>
-
-  </div>
-
-  <div class="contrasena-input">
-    <ion-item color="light">
-      <ion-input 
-        formControlName="password"
-        type="password" 
-        placeholder="Contraseña"
-        maxlength="10" 
-        class="color-input">
-      </ion-input>
-    </ion-item>
-
-    <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid ">
-      <ion-text *ngIf="errorControl.password.errors?.required">
-        Se requiere contraseña
-      </ion-text>
-      <ion-text *ngIf="errorControl.password.errors?.pattern">
-        Contraseña invalida(Debe tener 8 digitos, mayuscula, miniscula, numero)
-      </ion-text>
-    </div>
-
-    <div >
-
-      <a [routerLink]="['/resetpassword']" class="color-reset">¿Olvidaste tu contraseña?</a>
       
+        <ion-checkbox formControlName="rememberMe" >Recuérdame</ion-checkbox>
+
+    
     </div>
-
-  </div>
-
-</form>
+  
+  </form>
 
   <ion-button (click)="login()" shape="round">
     ENTRAR

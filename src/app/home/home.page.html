@@ -218,7 +218,7 @@
               </div>
               <div class="ion-padding">
               </div> 
-              <ion-progress-bar color="success" [value]="presupuesto.porcentaje ? presupuesto.porcentaje : 0">
+              <ion-progress-bar color="primary" [value]="presupuesto.porcentaje ? presupuesto.porcentaje : 0">
               </ion-progress-bar>
               <div class="porcentaje">
                 {{ presupuesto.porcentaje * 100 | number:'1.0-0' }} %
@@ -246,7 +246,7 @@
         <ion-card>
           <ion-card-header>
            <ion-card-title>Objetivos</ion-card-title>
-           <ion-card-subtitle>Trata de alcanzar tus metas!!</ion-card-subtitle>
+           <ion-card-subtitle>¡Trata de alcanzar tus metas!</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -260,7 +260,7 @@
                   <b>Valor:</b> {{ objetivo.valor | number: '1.0-0' }}
                 </div>
                 <div class="ion-padding"></div>
-                <ion-progress-bar color="primary" [value]="objetivo.progreso / objetivo.valor"></ion-progress-bar>
+                <ion-progress-bar color="success" [value]="objetivo.progreso / objetivo.valor"></ion-progress-bar>
                 <div class="porcentaje">
                   {{ objetivo.progreso / objetivo.valor * 100 | number:'1.0-0' }} %
                 </div>
@@ -296,7 +296,7 @@
 
           <div class="user_name">
             <ion-text color="primary">
-              <h1>Dario Avalos</h1>
+              <h1>{{ nombreUsuario }}</h1>
               <h1></h1>
             </ion-text>
           </div>
@@ -345,7 +345,7 @@
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/listcompras">
             <ion-icon name="bag" slot="start" color="light"></ion-icon>
             Lista de compras
           </ion-item>
@@ -357,19 +357,19 @@
           </ion-item> -->
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/tipocambio">
             <ion-icon name="cash" slot="start" color="light"></ion-icon>
             Tipo de cambio
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/perfil">
             <ion-icon name="person" slot="start" color="light"></ion-icon>
             Perfil de usuario
           </ion-item>
 
           <ion-item  
-            routerLink="/categorias">
+            routerLink="/acerca">
             <ion-icon name="cafe" slot="start" color="light"></ion-icon>
             Acerca de
           </ion-item>

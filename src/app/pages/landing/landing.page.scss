@@ -9,19 +9,22 @@
   // width: px;
 }
 
-.container{
-    height: 400px;
-    width: 500px;
-    margin: -75px;
-}
+// .container{
+//     position: fixed;
+//     height: 400px;
+//     width: 500px;
+//     // margin: -75px;
+// }
 
 .margen-borde-inferior{
   border-radius: 200px 200px 0px 0px;
   background: #f5c723;
   position: fixed;
-  bottom:  -150px;
-  margin: -35px;
-  height: 500px;
-  width: 450px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* centra horizontalmente */
+  height: 35vh; /* ajustar según sea necesario */
+  width: 100vw; /* ajustar según sea necesario */
 }
   

@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <div class="borde-inicio"></div>
+    <ion-title class="inicio">Tipo de cambio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-select label="Moneda Base" [(ngModel)]="baseCurrency">
+            <ion-select-option value="PYG">Paraguay (PYG)</ion-select-option>
+            <ion-select-option value="USD">Estados Unidos (USD)</ion-select-option>
+            <ion-select-option value="EUR">Europa (EUR)</ion-select-option>
+            <ion-select-option value="ARS">Argentina (ARS)</ion-select-option>
+            <ion-select-option value="BRL">Brasil (BRL)</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-select label="Moneda Objetivo" [(ngModel)]="targetCurrency">
+            <ion-select-option value="PYG">Paraguay (PYG)</ion-select-option>
+            <ion-select-option value="USD">Estados Unidos (USD)</ion-select-option>
+            <ion-select-option value="EUR">Europa (EUR)</ion-select-option>
+            <ion-select-option value="ARS">Argentina (ARS)</ion-select-option>
+            <ion-select-option value="BRL">Brasil (BRL)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    
+      <ion-button expand="full" (click)="convertir()">Convertir</ion-button>
+    
+      <ion-card *ngIf="resultado">
+        <ion-card-header class="resultado-text">
+          Resultado
+        </ion-card-header>
+        <ion-card-content class="conversion-text">
+          1 {{ baseCurrency }} equivale a {{ resultado | number:'1.2-2' }} {{ targetCurrency }}
+        </ion-card-content>
+        Informacion de CurrencyLayer
+      </ion-card>
+
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
+
+
+
+

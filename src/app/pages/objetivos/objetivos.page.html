@@ -73,7 +73,7 @@
           <b>Valor:</b> {{ objetivo.valor | number: '1.0-0' }}
         </div>
         <div class="ion-padding"></div>
-        <ion-progress-bar color="primary" [value]="objetivo.progreso / objetivo.valor"></ion-progress-bar>
+        <ion-progress-bar color="success" [value]="objetivo.progreso / objetivo.valor"></ion-progress-bar>
         <div class="porcentaje">
           {{ objetivo.progreso / objetivo.valor * 100 | number:'1.0-0' }} %
         </div>

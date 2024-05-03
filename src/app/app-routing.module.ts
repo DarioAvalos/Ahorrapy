@@ -66,6 +66,22 @@ const routes: Routes = [
   {
     path: 'objetivos',
     loadChildren: () => import('./pages/objetivos/objetivos.module').then( m => m.ObjetivosPageModule)
+  },
+  {
+    path: 'listcompras',
+    loadChildren: () => import('./pages/listcompras/listcompras.module').then( m => m.ListcomprasPageModule)
+  },
+  {
+    path: 'tipocambio',
+    loadChildren: () => import('./pages/tipocambio/tipocambio.module').then( m => m.TipocambioPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'acerca',
+    loadChildren: () => import('./pages/acerca/acerca.module').then( m => m.AcercaPageModule)
   }
 ];
 

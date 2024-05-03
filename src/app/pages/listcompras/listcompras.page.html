@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <div class="borde-inicio"></div>
+    <ion-title class="inicio">Lista de compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list id="lista-compras" *ngIf="items.length > 0; else noItems">
+    <ion-item-sliding *ngFor="let item of items; let i = index">
+      <ion-item lines="none">
+        <ion-checkbox slot="start" (ionChange)="tacharItem(i)" [(ngModel)]="item.checked" [aria-label]="item.nombre"></ion-checkbox>
+        <ion-label [class.checked]="item.checked">{{ item.nombre }}</ion-label>
+        <ion-button fill="clear" slot="end" (click)="editarItem(i)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="eliminarItem(i)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="agregarItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ng-template #noItems>
+    <div class="no-items">
+      No hay elementos en la lista, toca el botón más para añadir la primera
+    </div>
+  </ng-template>
+</ion-content>
+
+
+
+

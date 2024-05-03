@@ -12,7 +12,7 @@ export class GastosPage implements OnInit {
   totalRestado: number;
   cuenta: string;
 
-  selectTabs = 'cuentaE';
+  selectTabsgasto = 'cuentaE';
 
   constructor( private registroService: RegistroService ) { }
 
@@ -21,19 +21,19 @@ export class GastosPage implements OnInit {
   }
 
   cargarRegistros() {
-    const cuenta = this.selectTabs === 'cuentaE' ? 'efectivo' : 'tarjeta';
+    const cuenta = this.selectTabsgasto === 'cuentaE' ? 'efectivo' : 'tarjeta';
     const montoInicial = parseFloat(localStorage.getItem(cuenta).replace(/\./g, '').replace(',', '.'));
     this.totalRestado = this.registroService.obtenerTotal(montoInicial, cuenta);
     this.registros = this.registroService.obtenerRegistrosPorCuenta(cuenta);
   }
 
   segmentChanged(event) {
-    this.selectTabs = event.detail.value;
+    this.selectTabsgasto = event.detail.value;
     this.cargarRegistros();
   }
 
   limpiarRegistros() {
-    const cuenta = this.selectTabs === 'cuentaE' ? 'efectivo' : 'tarjeta';
+    const cuenta = this.selectTabsgasto === 'cuentaE' ? 'efectivo' : 'tarjeta';
     this.registroService.limpiarRegistrosPorCuenta(cuenta);
     this.cargarRegistros();
   }

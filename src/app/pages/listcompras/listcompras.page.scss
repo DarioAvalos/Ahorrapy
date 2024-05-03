@@ -1,0 +1,30 @@
+.inicio {
+    position: relative;
+    text-align: end; /* Alinear horizontalmente */
+    padding-right: 30px; /* Ajustar el relleno izquierdo */
+}
+  
+.borde-inicio {
+  position: fixed;
+  border-radius: 10px 0px 0px 10px;
+  background: #4f4f4f;
+  top: 8px;
+  right: 0px; /* Coloca la imagen en el borde derecha */
+  float: left;
+  padding: 20px; 
+  width: 220px;
+  height: 2px; 
+  // margin: 60px;
+}
+
+ion-label.checked {
+  text-decoration: line-through;
+}
+
+.no-items {
+    opacity: 82%;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 18px;
+    color: var(--ion-color-light);
+}

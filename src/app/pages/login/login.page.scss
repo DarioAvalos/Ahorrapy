@@ -1,9 +1,11 @@
 
 .texto-con-relleno{
     text-align: center;
-    position: absolute;
+    position: fixed;
     top: 80px;
-    left: 130px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     background-color: #f5c723;/* Color de fondo */
     padding: 5px;/* Espacio de relleno alrededor del texto */
     border-radius: 20px;/* Opcional: para bordes redondeados */
@@ -25,17 +27,17 @@
     // width: 100px;
 }
 
-.margen-borde-inferior{
-    border-radius: 200px 0px 0px 0px;
-    opacity: 0.8;
-    background: #f5c723;
-    position: absolute;
-    bottom: 0px; /* Coloca la imagen en la parte superior */
-    right: 0%; /* Coloca la imagen en el borde derecha */
-    left: 0%; /* Coloca la imagen en el borde izquierdo */
-    padding: 0px;
-    height: 450px;
-    width: 420px;
+.margen-borde-inferior {
+  border-radius: 200px 0px 0px 0px;
+  opacity: 0.8;
+  background: #f5c723;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  // transform: translateX(-50%);
+  // padding: 0;
+  height: 55%; /* Ajusta según sea necesario */
+  width: 100%; /* Ajusta según sea necesario */
 }
 
 .correo-input {
@@ -66,24 +68,25 @@
   }
 
   ion-button {
-    position: absolute;
-    top: 660px;
-    left: 53px;
+    position: fixed;
+    bottom: 13%; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
     --background: #4f4f4f;
-  
     color: rgb(255, 255, 255);
-  
-    --padding-top: 15px;
-    --padding-bottom: 15px;
-    --padding-start: 120px;
-    --padding-end: 120px
+    --padding-top: 10px; /* Ajusta según sea necesario */
+    --padding-bottom: 10px; /* Ajusta según sea necesario */
+    --padding-start: 120px; /* Ajusta según sea necesario */
+    --padding-end: 120px; /* Ajusta según sea necesario */
   }
 
-  .color-registro{
+  .color-registro {
     position: fixed;
-    top: 720px;
-    left: 100px; /* Coloca la imagen en el borde izquierdo */
-    color: #050505; /* Color de fondo */
+    bottom: 8%; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #050505;
+    white-space: nowrap;
   }
 
   .negrita{

@@ -44,6 +44,8 @@ export class HomePage implements OnInit, OnDestroy {
   @ViewChild("chart") chart: ChartComponent;
   public chartGastos: Partial<ChartOptions>;
 
+  nombreUsuario: string;
+
   selectTabs = 'cuentas';
 
   selectTabs2 = 'efectivo';
@@ -98,6 +100,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.nombreUsuario = localStorage.getItem('nombreUsuario') || 'Bienvenido';
     this.cargarRegistrosE();
     this.cargarRegistrosT();
     this.actualizarTotalGastos(this.selectTabs2);
@@ -126,6 +129,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
+    this.nombreUsuario = localStorage.getItem('nombreUsuario') || 'Bienvenido';
     // Recargar datos cada vez que la página se visualiza
     this.cargarRegistrosE();
     this.cargarRegistrosT();
