@@ -12,6 +12,9 @@ import { ObjetivoService } from '../services/objetivo.service';
 import { Objetivo } from '../models/objetivo.model';
 import { Presupuesto } from '../models/presupuesto.model';
 
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
+
 import {
   ApexNonAxisChartSeries,
   ApexAxisChartSeries,
@@ -77,7 +80,7 @@ export class HomePage implements OnInit, OnDestroy {
         // width: 300,
         // height: 800,
         type: "pie",
-        foreColor: '#ffffff',
+        foreColor: '#46b0e0',
       },
       labels: [],
       responsive: [
@@ -232,8 +235,28 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   async logout(){
-    this.authService.signOut().then(()=>{
-      this.router.navigate(['/landing'])
+    this.authService.signOut().then(
+      async ()=>{
+      const alert = await this.alertController.create({
+        header: 'Cerrar sesion',
+        message: '¿Quieres ir a login o salir de la app?',
+        buttons: [
+          {
+            text: 'Login',
+            handler: () => {
+              this.router.navigate(['/login']);
+            },
+            cssClass: 'secondary'
+          }, {
+            text: 'Salir',
+            handler: () => {
+              App['exitApp']();
+            },
+          }
+        ]
+      });
+      await alert.present();
+      
     }).catch((error)=>{
       console.log(error);
     })

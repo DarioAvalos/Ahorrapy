@@ -8,12 +8,16 @@ import { TipocambioPageRoutingModule } from './tipocambio-routing.module';
 
 import { TipocambioPage } from './tipocambio.page';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TipocambioPageRoutingModule
+    TipocambioPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [TipocambioPage]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class RegistrarPage implements OnInit {
 
   constructor( public formBuilder: FormBuilder, 
                public loadingCtrl: LoadingController,
+               public toastController: ToastController,
                public authService: AutenticacionService,
                public router: Router, 
                private alertController: AlertController) { }
@@ -43,20 +44,35 @@ export class RegistrarPage implements OnInit {
   }
 
   async registrar(){
-    const loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create({
+      message: 'Registrando...'
+    });
     await loading.present();
+
     if(this.regForm?.valid){
       const user = await this.authService.registerUser(this.regForm.value.email,this.regForm.value.password).catch((error)=>{
-          console.log(error);
-          loading.dismiss();
-        })
+        console.log(error);
+        loading.dismiss();
+      });
 
-        if(user){
-          loading.dismiss();
-          this.router.navigate(['/home'])
-        }else{
-          console.log('proporcionar el valor correcto');
-        }
+      if(user){
+        loading.dismiss();
+        const toast = await this.toastController.create({
+          message: 'Registro exitoso. Por favor, inicia sesión.',
+          duration: 2000,
+          position: 'top'
+        });
+        await toast.present();
+        this.router.navigate(['/login']);
+      } else {
+        loading.dismiss();
+        const toast = await this.toastController.create({
+          message: 'Error al registrar usuario. Por favor, inténtalo de nuevo.',
+          duration: 2000,
+          position: 'top'
+        });
+        await toast.present();
+      }
     }
   }
   

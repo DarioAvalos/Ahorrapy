@@ -27,7 +27,7 @@
       <div *ngIf="selectTabs == 'cuentas'">
         <ion-card>
           <ion-card-header>
-            <ion-card-title >Lista de cuentas</ion-card-title>
+            <ion-card-title>Lista de cuentas</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             
@@ -36,7 +36,7 @@
                 <ion-col>
 
                   <ion-card class="color_card" (click)="selectTabs2 = 'efectivo'" (click)="actualizarTotalGastos(selectTabs2)" (click)="Muestragrafico(selectTabs2)">
-                    <ion-card-title>Efectivo</ion-card-title>
+                    <ion-card-title class="label_card">Efectivo</ion-card-title>
                     <ion-card-subtitle class="label_size_card">GS {{ totalRestadoE | formatoMilesHome }}</ion-card-subtitle>
                   </ion-card>
 
@@ -45,7 +45,7 @@
                 <ion-col>
 
                   <ion-card class="color_card" (click)="selectTabs2 = 'tarjeta'" (click)="actualizarTotalGastos(selectTabs2)" (click)="Muestragrafico(selectTabs2)">
-                    <ion-card-title>Tarjeta</ion-card-title>
+                    <ion-card-title class="label_card">Tarjeta</ion-card-title>
                     <ion-card-subtitle class="label_size_card">GS {{ totalRestadoT | formatoMilesHome }}</ion-card-subtitle>
                   </ion-card>
 

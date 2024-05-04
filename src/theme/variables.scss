@@ -3,6 +3,7 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-color-my-custom-color: #ffffff;
   /** primary **/
   --ion-color-primary: #f5c723;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -68,13 +69,13 @@
   --ion-color-medium-tint: #4f4f4f;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #373738;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
-  
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -179,10 +180,6 @@
     --ion-color-step-850: #d9d9d9;
     --ion-color-step-900: #e6e6e6;
     --ion-color-step-950: #f2f2f2;
-
-    --ion-item-background: #000000;
-
-    --ion-card-background: #1c1c1d;
   }
 
   .ios ion-modal {
@@ -225,19 +222,11 @@
     --ion-color-step-850: #dbdbdb;
     --ion-color-step-900: #e7e7e7;
     --ion-color-step-950: #f3f3f3;
-
-    --ion-item-background: #1e1e1e;
-
-    --ion-toolbar-background: #1f1f1f;
-
-    --ion-tab-bar-background: #1f1f1f;
-
-    --ion-card-background: #1e1e1e;
   }
 }
 
 html {
-  /* 
+  /*
    * For more information on dynamic font scaling, visit the documentation:
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */

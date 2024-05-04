@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-tipocambio',
@@ -9,11 +10,11 @@ import axios from 'axios';
 export class TipocambioPage {
   baseCurrency: string = 'USD';
   targetCurrency: string = 'PYG';
-  accessKey: string = 'beb480265b3d1d7c1a0c63e4153f9fee'; // Reemplaza 'TU_ACCESS_KEY' por tu clave de acceso
+  accessKey: string = 'beb480265b3d1d7c1a0c63e4153f9fee';
 
   resultado: number | null = null;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const lastResult = localStorage.getItem('lastResult');
     if (lastResult) {
       this.resultado = parseFloat(lastResult);
@@ -22,9 +23,13 @@ export class TipocambioPage {
 
   async convertir() {
     try {
-      const response = await axios.get(`http://apilayer.net/api/live?access_key=${this.accessKey}&currencies=${this.targetCurrency}&source=${this.baseCurrency}&format=1`);
-      this.resultado = response.data.quotes[`${this.baseCurrency}${this.targetCurrency}`];
-      localStorage.setItem('lastResult', this.resultado.toString());
+      const response: any = await this.http.get(`http://api.currencylayer.com/live?access_key=${this.accessKey}&currencies=${this.targetCurrency}&source=${this.baseCurrency}&format=1`).toPromise();
+      if (response.success) {
+        this.resultado = response.quotes[`${this.baseCurrency}${this.targetCurrency}`];
+        localStorage.setItem('lastResult', this.resultado.toString());
+      } else {
+        console.error('Error en la respuesta de la API:', response.error.info);
+      }
     } catch (error) {
       console.error('Error al obtener la tasa de cambio', error);
     }

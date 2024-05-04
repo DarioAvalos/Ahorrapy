@@ -16,7 +16,7 @@
     right: 0%; /* Coloca la imagen en el borde derecha */
     left: 0%; /* Coloca la imagen en el borde izquierdo */
     padding: 0px;
-    height: 550px;
+    height: 650px;
     width: 420px;
 }
 
@@ -24,9 +24,10 @@
     color: #5F6062;
     font-weight: bold;
     position: fixed;
-    top: 320px;
-    left: 80px;
-    font-size: 1.7em; /* Tamaño de letra relativo */
+    top: 40%; /* Centra verticalmente */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em; /* Tamaño de letra relativo */
 }
 
 .nombre-input {
@@ -67,24 +68,25 @@
 
 
 ion-button {
-    position: absolute;
-    top: 700px;
-    left: 35px;
-    --background: #4f4f4f;
-  
-    color: rgb(255, 255, 255);
-  
-    --padding-top: 15px;
-    --padding-bottom: 15px;
-    --padding-start: 120px;
-    --padding-end: 120px
-}
-
-.color-registro{
     position: fixed;
-    top: 760px;
-    left: 95px; /* Coloca la imagen en el borde izquierdo */
-    color: #050505; /* Color de fondo */
+    bottom: 9%; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    --background: #4f4f4f;
+    color: rgb(255, 255, 255);
+    --padding-top: 10px; /* Ajusta según sea necesario */
+    --padding-bottom: 10px; /* Ajusta según sea necesario */
+    --padding-start: 120px; /* Ajusta según sea necesario */
+    --padding-end: 120px; /* Ajusta según sea necesario */
+  }
+
+  .color-registro {
+    position: fixed;
+    bottom: 3%; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #050505;
+    white-space: nowrap;
   }
 
   .negrita{

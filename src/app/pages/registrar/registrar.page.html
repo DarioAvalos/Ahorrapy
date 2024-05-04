@@ -17,7 +17,7 @@
 <form [formGroup]="regForm" novalidate>
 
   <div class="nombre-input">
-    <ion-item  color="light">
+    <ion-item  class="my-white-input">
       <ion-input
         formControlName="nombre"
         type="text"
@@ -35,10 +35,10 @@
   </div>
 
   <div class="fecha-input">
-    <ion-item color="light">
+    <ion-item class="my-white-input">
       <ion-input 
         formControlName="fecha"
-        [(ngModel)]="dateTimeValue" readonly (ionFocus)="openDateTimePicker()"
+        [(ngModel)]="dateTimeValue" readonly (click)="openDateTimePicker()"
         placeholder="Fecha nacimiento" 
         class="color-input">
       </ion-input>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="correo-input">
-    <ion-item color="light">
+    <ion-item class="my-white-input">
       <ion-input
         formControlName="email" 
         type="email" 
@@ -74,7 +74,7 @@
   </div>
 
   <div class="contrasena-input">
-    <ion-item color="light">
+    <ion-item class="my-white-input">
       <ion-input 
         formControlName="password"
         type="password"

@@ -19,6 +19,8 @@
 
 ion-label.checked {
   text-decoration: line-through;
+  text-decoration-color: #ff0000; /* Color verde */
+  text-decoration-thickness: 2.3px; /* Grosor de la línea */
 }
 
 .no-items {

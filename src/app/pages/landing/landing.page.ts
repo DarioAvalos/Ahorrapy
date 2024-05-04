@@ -8,11 +8,14 @@ import { Platform } from '@ionic/angular';
 })
 export class LandingPage implements OnInit {
 
-  constructor(private platform: Platform) { 
+  constructor(
+    private platform: Platform,
+    ) { 
     this.initializeApp();
   }
 
   ngOnInit() {
+    
   }
 
   initializeApp() {

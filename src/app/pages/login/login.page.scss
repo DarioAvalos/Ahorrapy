@@ -56,40 +56,42 @@
     border-radius: 10px; /* Opcional: para bordes redondeados */
   }
 
-  .color-input {
-    color: #2f2f2f;
-  }
+.color-input {
+  color: #2f2f2f;
+}
 
-  .color-reset{
-    position: absolute; 
-    top: 120%;
-    left: 30%; /* Coloca la imagen en el borde izquierdo */
-    color: #040404; /* Color de fondo */
-  }
+.color-inp {
+  color: var(--ion-color-my-custom-color);
+}
 
-  ion-button {
-    position: fixed;
-    bottom: 13%; /* Ajusta según sea necesario */
-    left: 50%;
-    transform: translateX(-50%);
-    --background: #4f4f4f;
-    color: rgb(255, 255, 255);
-    --padding-top: 10px; /* Ajusta según sea necesario */
-    --padding-bottom: 10px; /* Ajusta según sea necesario */
-    --padding-start: 120px; /* Ajusta según sea necesario */
-    --padding-end: 120px; /* Ajusta según sea necesario */
-  }
+.color-reset{
+  position: absolute; 
+  top: 120%;
+  left: 30%; /* Coloca la imagen en el borde izquierdo */
+  color: #040404; /* Color de fondo */
+}
+ion-button {
+  position: fixed;
+  bottom: 13%; /* Ajusta según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  --background: #4f4f4f;
+  color: rgb(255, 255, 255);
+  --padding-top: 10px; /* Ajusta según sea necesario */
+  --padding-bottom: 10px; /* Ajusta según sea necesario */
+  --padding-start: 120px; /* Ajusta según sea necesario */
+  --padding-end: 120px; /* Ajusta según sea necesario */
+}
+.color-registro {
+  position: fixed;
+  bottom: 8%; /* Ajusta según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #050505;
+  white-space: nowrap;
+}
 
-  .color-registro {
-    position: fixed;
-    bottom: 8%; /* Ajusta según sea necesario */
-    left: 50%;
-    transform: translateX(-50%);
-    color: #050505;
-    white-space: nowrap;
-  }
-
-  .negrita{
-    color: #040404;
-    font-weight: bold;
-  }
+.negrita{
+  color: #040404;
+  font-weight: bold;
+}
