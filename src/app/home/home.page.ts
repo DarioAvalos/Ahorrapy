@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AutenticacionService } from '../services/autenticacion.service';
 import { Router } from '@angular/router';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
 
 import { RegistroService } from '../services/registros.service';
 
@@ -44,6 +45,9 @@ export type ChartOptions = {
 })
 export class HomePage implements OnInit, OnDestroy {
 
+  private backButtonSubscription: Subscription;
+  private isConfirmDialogOpen: boolean = false;
+
   @ViewChild("chart") chart: ChartComponent;
   public chartGastos: Partial<ChartOptions>;
 
@@ -72,7 +76,9 @@ export class HomePage implements OnInit, OnDestroy {
               private registroService: RegistroService,
               private alertController: AlertController,
               private presupuestoService: PresupuestoService,
-              private objectService: ObjetivoService
+              private objectService: ObjetivoService,
+              private platform: Platform,
+              private routerOutlet: IonRouterOutlet 
   ) {
     this.chartGastos = {
       series: [],
@@ -129,6 +135,36 @@ export class HomePage implements OnInit, OnDestroy {
     );
 
     // this.presupuestos = this.presupuestoService.obtenerPresupuestos();
+
+    // Suscribirse al evento del botón de atrás
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(10, async () => {
+      // Verificar si el usuario está en la página de inicio (home)
+      if (this.router.url === '/home') {
+      // Si el diálogo ya está abierto, no mostrarlo de nuevo
+      if (!this.isConfirmDialogOpen) {
+        this.isConfirmDialogOpen = true; // Marcar como abierto
+        this.logout().then(() => {
+        this.isConfirmDialogOpen = false; // Resetear el flag al cerrar el diálogo
+        });
+      }
+      } else if (this.routerOutlet.canGoBack()) {
+      // Si no está en home y puede ir hacia atrás, hacer retroceder la navegación normalmente
+        this.routerOutlet.pop();
+      } else {
+      // Si no hay más páginas en el historial, salir de la aplicación
+        App['exitApp']();
+      }
+    });
+
+  }
+
+  handleBackButton() {
+    // Capturar evento de botón de atrás solo en la página de inicio
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(10, async () => {
+      if (this.router.url === '/home') {
+        await this.logout();
+      }
+    });
   }
 
   ionViewWillEnter() {
@@ -232,6 +268,12 @@ export class HomePage implements OnInit, OnDestroy {
     if (this.selectTabsSubscription) {
       this.selectTabsSubscription.unsubscribe();
     }
+
+     // Eliminar la suscripción al botón de atrás al salir de la página
+     if (this.backButtonSubscription) {
+      this.backButtonSubscription.unsubscribe();
+    }
+
   }
 
   async logout(){
